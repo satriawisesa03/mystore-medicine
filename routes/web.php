@@ -40,3 +40,6 @@ Route::post('satria', function(){
 Route::get('greeting', function(){
     return view ('welcome', ['name'=>'Satria']);
 });
+
+Route::resource('obat','MedicineController');
+Route::resource('kategori_obat','CategoryController');
