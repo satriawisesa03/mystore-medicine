@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Transaction;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $datas = Category::all();
-        return view('category.index',compact('datas'));
+        $datas = Transaction::with(
+            ['user','buyer']
+        )->get();
+        //dd($datas);
+        return view('transaction.index',compact('datas'));
     }
 
     /**
@@ -25,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view("category.create");
+        //
     }
 
     /**
@@ -36,20 +39,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data=new Category();
-        $data->name=$request->get('name');
-        $data->description=$request->get('dsc');
-        $data->save();
-        return redirect()->route('kategori_obat.index')->with('status','category is added');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\CatecoryModel  $catecoryModel
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(CatecoryModel $catecoryModel)
+    public function show(Transaction $transaction)
     {
         //
     }
@@ -57,10 +56,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CatecoryModel  $catecoryModel
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(CatecoryModel $catecoryModel)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -69,10 +68,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CatecoryModel  $catecoryModel
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CatecoryModel $catecoryModel)
+    public function update(Request $request, Transaction $transaction)
     {
         //
     }
@@ -80,10 +79,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CatecoryModel  $catecoryModel
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CatecoryModel $catecoryModel)
+    public function destroy(Transaction $transaction)
     {
         //
     }

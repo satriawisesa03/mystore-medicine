@@ -35,7 +35,7 @@ class MedicineController extends Controller
      */
     public function create()
     {
-        
+        return view("medicine.create");
     }
 
     /**
@@ -46,7 +46,17 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=new Medicine();
+        $data->generic_name=$request->get('name');
+        $data->form=$request->get('form');
+        $data->restriction_formula=$request->get('frm');
+        $data->description=$request->get('dsc');
+        $data->faskes_tk1=$request->get('fk1');
+        $data->faskes_tk2=$request->get('fk2');
+        $data->faskes_tk3=$request->get('fk3');
+        $data->category_id=$request->get('category_id');
+        $data->save();
+        return redirect()->route('obat.index')->with('status','obat is added');
     }
 
     /**

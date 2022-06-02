@@ -37,5 +37,17 @@
         <td>{{ $li->category_id }}</td>
       </tr>
       @endforeach
+      <div class="page-toolbar">
+        <a href="{{url('obat/create')}}" class='btn btn-info'
+        type="button"> + Obat Baru </a>
+      </div>
     </tbody>
+</table>
+<div class="page-content">
+      @if (session('status'))
+        <div class ="alert alert-success">
+          {{session('status')}}
+        </div>
+      @endif
+    </div>
 @endsection

@@ -46,6 +46,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="{{ asset('conquer2/css/custom.css')}}" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
+@yield('javascript')
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -495,7 +496,17 @@ License: You must have a valid license purchased only from themeforest(the above
 					<a href="{{route('kategori_obat.index')}}">
 						<i class="icon-book-open"></i>
 						Category Medicine</a>
-					</li>
+				</li>
+				<li class="start active ">
+				<a href="{{route('transaction.index')}}">
+						<i class="icon-book-open"></i>
+						Transaction</a>
+				</li>
+				<li>
+				<a href="{{route('suppliers.index')}}">
+						<i class="icon-book-open"></i>
+						Supplier</a>
+				</li>
 				<li>
 					<a href="javascript:;">
 					<i class="icon-puzzle"></i>
@@ -890,6 +901,11 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="page-content">
 			@yield('content')
 			@yield('medicineContent')
+			@yield('transactionContent')
+			@yield('supplierContent')
+			@yield('daftarSupplier')
+			@yield('createCategory')
+			@yield('createMedicine')
 		</div>
 	</div>
 	<!-- END CONTENT -->

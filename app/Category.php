@@ -10,4 +10,6 @@ class Category extends Model
    {
        return $this->hasMany('app\Medicine','category_id','id');
    }
+
+   public $timestamps = false;
 }
