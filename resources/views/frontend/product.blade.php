@@ -10,7 +10,7 @@
         @foreach($medicines as $li)
             <div class="col-xs-18 col-sm-6 col-md-3">
                 <div class="thumbnail">
-                    <img src="{{ asset('img/'.$li->image.'.jpg') }}" width="500" height="300">
+                    <img src="{{ asset('img/'.$li->image.'.jpg') }}" width="100" height="100">
                     <div class="caption">
                         <h4>{{ $li->generic_name}}</h4>
                         <p>{{ Str::limit(strtolower($li->description), 50)}}</p>

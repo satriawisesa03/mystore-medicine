@@ -46,7 +46,7 @@
         <tr>
             <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
             <td class="hidden-xs"></td>
-            <td class="hidden-xs"><a href="{{ route('/submit_checkout') }}" class="btn btn-danger"> Finish
+            <td class="hidden-xs"><a href="{{ route('submitCheckout') }}" class="btn btn-danger"> Finish
                 <i class="fa fa-angle-right"></i></a></td>
             <td class="hidden-xs text-center"><strong>Total Rp. {{ $total}}</strong></td>
         </tr>
