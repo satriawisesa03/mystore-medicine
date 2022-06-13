@@ -63,8 +63,8 @@ class SupplierController extends Controller
     public function edit(Supplier $supplier)
     {
         $data=$supplier;
-        return view('supplier.edit',compact('data'));
-        //dd($supplier);
+        //return view('supplier.edit',compact('data'));
+        dd($supplier);
     }
 
     /**
@@ -90,6 +90,9 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
+
+        $this->authorize('delete-permission',$supplier); 
+
         try{
             $supplier->delete();
             return redirect()->route('suppliers.index')->with('status','Data Supplier berhasil dihapus');

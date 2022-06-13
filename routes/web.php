@@ -45,4 +45,14 @@ Route::resource('obat','MedicineController');
 Route::resource('kategori_obat','CategoryController');
 Route::post('transactions/showDataAjax/','TransactionController@showAjax')->name('transaction.showAjax');
 Route::resource('transaction','TransactionController');
-Route::resource('suppliers','SupplierController');
+Route::resource('suppliers','SupplierController')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'MedicineController@front_index');
+Route::get('cart', 'MedicineController@cart');
+Route::get('add-to-cart/{id}', 'MedicineController@addToCart');
+Route::get('/checkout','TransactionController@form_submit_front')->middleware(['auth']);
+Route::get('/submit_checkout','TransactionController@submit_front')->name('submitCheckout')->middleware(['auth']);

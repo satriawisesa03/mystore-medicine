@@ -12,6 +12,32 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function form_submit_front()
+    {
+        $this->authorize('checkmember');
+        return view('frontend.checkout');
+    }
+
+    public function submit_front()
+    {
+        $this->authorize('checkmember');
+
+        $cart = session()->get('cart');
+        $user = Auth::user();
+        $t= new Transaction;
+        $t->buyer_id = $user->id;
+        $t->transaction_date = Carbon::now()->toDateTimeString();
+        $t->save();
+
+        $totalharga = $t->insertProduct($cart,$user);
+        $t->total = $totalharga;
+        $t->save();
+
+        session()->forget('cart');
+        return redirect('home');
+    }
+
     public function index()
     {
         $datas = Transaction::with(

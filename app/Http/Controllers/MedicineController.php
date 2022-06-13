@@ -13,6 +13,39 @@ class MedicineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function front_index()
+    {
+        $medicines= Medicine::all();
+        return view('frontend.product', compact('medicines'));
+    }
+    
+    public function addToCart($id)
+    {
+        $med=Medicine::find($id);
+        $cart=session()->get('cart');
+        if(!isset($cart[$id]))
+        {
+            $cart[$id]=[
+                "name"=>$med->generic_name,
+                "quantity"=>1,
+                "price"=>$med->price,
+                "photo"=>$med->image
+            ];
+        }
+        else
+        {
+            $cart[$id]['quantity']++;
+        }
+        session()->put('cart',$cart);
+        return redirect()->back()->with('success','product added to cart successfully!');
+    }
+
+    public function cart()
+    {
+        return view('frontend.cart');
+    }
+
     public function index()
     {
         // $listdata= DB::select(DB::raw('select * from medicines'));
